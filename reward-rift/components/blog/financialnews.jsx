@@ -12,7 +12,7 @@ const Financialnews = () => {
 							Financial News
 						</h2>
 						<p className="text-lg dark:text-jacarta-300">
-							Here are the best features that makes Xhibiter the most powerful, and fast.
+							Here are the best features that makes RewardRift the most powerful, and fast.
 						</p>
 					</div>
 

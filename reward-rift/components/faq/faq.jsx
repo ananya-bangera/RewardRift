@@ -22,7 +22,7 @@ const Faq = () => {
 							<p className="text-lg text-jacarta-700 dark:text-jacarta-100">
 								Any Question?{' '}
 								<a href="#" className="text-accent">
-									support@xhibiter.com
+									support@RewardRift.com
 								</a>
 							</p>
 						</div>

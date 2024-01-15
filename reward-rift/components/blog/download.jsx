@@ -13,7 +13,7 @@ const Download = () => {
 						<div className="mb-10 lg:order-1 lg:w-2/4 xl:w-[30%]">
 							<div className="text-center lg:text-left">
 								<h2 className="mb-6 font-display text-xl text-jacarta-700 dark:text-white lg:pr-4">
-									Download Xhibiter app
+									Download RewardRift app
 									<span className="text-jacarta-300 ml-2">
 										to track your NFT portfolio and discover drops
 									</span>
@@ -62,7 +62,7 @@ const Download = () => {
 										</g>
 									</svg>
 									<span className="text-lg text-jacarta-700 dark:text-white">
-										Scan to download Xhibiter app
+										Scan to download RewardRift app
 									</span>
 								</div>
 							</div>

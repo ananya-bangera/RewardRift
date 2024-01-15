@@ -12,7 +12,7 @@ import Financialnews from '../../components/blog/financialnews';
 const Home_7 = () => {
 	return (
 		<>
-			<Meta title="Home 7 || Xhibiter | NFT Marketplace Next.js Template" />
+			<Meta title="Home 7 || RewardRift | NFT Marketplace Next.js Template" />
 			<Hero_7 />
 			<Partners />
 			<Services />

@@ -9,7 +9,7 @@ const Wallet = () => {
 	const bgImage = '/images/page-title/wallet_banner.jpg';
 	return (
 		<div>
-			<Meta title="Wallet || Xhibiter | NFT Marketplace Next.js Template" />
+			<Meta title="Wallet || RewardRift | NFT Marketplace Next.js Template" />
 			<div className="pt-[5.5rem] lg:pt-24">
 				{/* <!-- Wallet --> */}
 

@@ -5,7 +5,7 @@ import Meta from '../../components/Meta';
 const Tarms = () => {
 	return (
 		<div>
-			<Meta title="Tarms || Xhibiter | NFT Marketplace Next.js Template" />
+			<Meta title="Tarms || RewardRift | NFT Marketplace Next.js Template" />
 			<div className="pt-[5.5rem] lg:pt-24">
 				{/* <!-- TOS --> */}
 				<section className="dark:bg-jacarta-800 relative py-16 md:py-24">
@@ -20,7 +20,7 @@ const Tarms = () => {
 							<h2 className="text-base">Introduction</h2>
 							<p>
 								{
-									"These Terms of Service (“Terms”) govern your access to and use of the Xhibiter website(s), our APIs, mobile app (the “App”), and any other software, tools, features, or functionalities provided on or in connection with our services; including without limitation using our services to view, explore, and create NFTs and use our tools, at your own discretion, to connect directly with others to purchase, sell, or transfer NFTs on public blockchains (collectively, the “Service”). “NFT” in these Terms means a non-fungible token or similar digital item implemented on a blockchain (such as the Ethereum blockchain), which uses smart contracts to link to or otherwise be associated with certain content or data. For purposes of these Terms, “user”, “you”, and “your” means you as the user of the Service. If you use the Service on behalf of a company or other entity then “you” includes you and that entity, and you represent and warrant that (a) you are an authorized representative of the entity with the authority to bind the entity to these Terms, and (b) you agree to these Terms on the entity's behalf."
+									"These Terms of Service (“Terms”) govern your access to and use of the RewardRift website(s), our APIs, mobile app (the “App”), and any other software, tools, features, or functionalities provided on or in connection with our services; including without limitation using our services to view, explore, and create NFTs and use our tools, at your own discretion, to connect directly with others to purchase, sell, or transfer NFTs on public blockchains (collectively, the “Service”). “NFT” in these Terms means a non-fungible token or similar digital item implemented on a blockchain (such as the Ethereum blockchain), which uses smart contracts to link to or otherwise be associated with certain content or data. For purposes of these Terms, “user”, “you”, and “your” means you as the user of the Service. If you use the Service on behalf of a company or other entity then “you” includes you and that entity, and you represent and warrant that (a) you are an authorized representative of the entity with the authority to bind the entity to these Terms, and (b) you agree to these Terms on the entity's behalf."
 								}
 							</p>
 							<p>
@@ -37,8 +37,8 @@ const Tarms = () => {
 							</p>
 
 							<p>
-								Xhibiter is not a wallet provider, exchange, broker, financial institution, or
-								creditor. Xhibiter provides a peer-to-peer web3 service that helps users discover
+								RewardRift is not a wallet provider, exchange, broker, financial institution, or
+								creditor. RewardRift provides a peer-to-peer web3 service that helps users discover
 								and directly interact with each other and NFTs available on public blockchains. We
 								do not have custody or control over the NFTs or blockchains you are interacting with
 								and we do not execute or effectuate purchases, transfers, or sales of NFTs. To use
@@ -62,9 +62,9 @@ const Tarms = () => {
 								The Service, including its “look and feel” (e.g., text, graphics, images, logos,
 								page headers, button icons, and scripts), proprietary content, information and other
 								materials, and all content and other materials contained therein, including, without
-								limitation, the Xhibiter logo and all designs, text, graphics, pictures, data,
+								limitation, the RewardRift logo and all designs, text, graphics, pictures, data,
 								software, sound files, other files, and the selection and arrangement thereof are
-								the proprietary property of Xhibiter or our affiliates, licensors, or users, as
+								the proprietary property of RewardRift or our affiliates, licensors, or users, as
 								applicable, and you agree not to take any action(s) inconsistent with such ownership
 								interests. We and our affiliates, licensors, and users, as applicable, reserve all
 								rights in connection with the Service and its content, including, without
@@ -112,10 +112,10 @@ const Tarms = () => {
 							<h2>Miscellaneous</h2>
 
 							<p>
-								These Terms constitute the entire agreement between you and Xhibiter relating to
+								These Terms constitute the entire agreement between you and RewardRift relating to
 								your access to and use of the Service. These Terms, and any rights and licenses
 								granted hereunder, may not be transferred or assigned by you without the prior
-								written consent of Xhibiter, and Xhibiter’s failure to assert any right or provision
+								written consent of RewardRift, and RewardRift’s failure to assert any right or provision
 								under these Terms shall not constitute a waiver of such right or provision. No
 								waiver by either party of any breach or default hereunder shall be deemed to be a
 								waiver of any preceding or subsequent breach or default. The section headings used
@@ -125,7 +125,7 @@ const Tarms = () => {
 							<p>
 								The Service is operated by us in the United States. Those who choose to access the
 								Service from locations outside the United States do so at their own initiative and
-								are responsible for compliance with applicable local laws. You and Xhibiter agree
+								are responsible for compliance with applicable local laws. You and RewardRift agree
 								that the United Nations Convention on Contracts for the International Sale of Goods
 								will not apply to the interpretation or construction of these Terms.
 							</p>

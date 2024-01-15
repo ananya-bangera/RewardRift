@@ -12,7 +12,7 @@ import Meta from '../../components/Meta';
 const Home_2 = () => {
 	return (
 		<>
-			<Meta title="Home 2 || Xhibiter | NFT Marketplace Next.js Template" />
+			<Meta title="Home 2 || RewardRift | NFT Marketplace Next.js Template" />
 			<Hero_2 />
 			<Top_collection />
 			<Auctions_categories />

@@ -28,7 +28,7 @@ const Home_8 = () => {
 
 	return (
 		<>
-			<Meta title="Home 8 || Xhibiter | NFT Marketplace Next.js Template" />
+			<Meta title="Home 8 || RewardRift | NFT Marketplace Next.js Template" />
 			<Hero_8 />
 			<Intro_video />
 			<Characters />

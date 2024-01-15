@@ -18,7 +18,7 @@ const Home_3 = () => {
 
 	return (
 		<>
-			<Meta title="Home 3 || Xhibiter | NFT Marketplace Next.js Template" />
+			<Meta title="Home 3 || RewardRift | NFT Marketplace Next.js Template" />
 			<Hero_3 />
 			<Browse_category />
 			<Bids classes="dark:bg-jacarta-800 relative py-24" bgWhite={true} />

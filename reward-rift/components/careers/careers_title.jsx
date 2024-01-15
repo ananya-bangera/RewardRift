@@ -14,7 +14,7 @@ const Careers_title = () => {
 				<div className="container relative z-10">
 					<div className="mx-auto max-w-xl text-center">
 						<h1 className="mb-6 text-center font-display text-4xl font-medium text-jacarta-700 dark:text-white">
-							Join the Xhibiter Team!
+							Join the RewardRift Team!
 						</h1>
 						<p className="text-lg leading-normal dark:text-jacarta-200">
 							Be part of our young and innovative team, and we build trust, embrace feedback, grow

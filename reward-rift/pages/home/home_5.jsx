@@ -58,7 +58,7 @@ const submitTransaction = async(
    trial();
   return (
     <>
-      <Meta title="Home 5 || Xhibiter | NFT Marketplace Next.js Template" />
+      <Meta title="Home 5 || RewardRift | NFT Marketplace Next.js Template" />
 
       <Hero_5 />
 

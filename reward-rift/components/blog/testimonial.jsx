@@ -27,7 +27,7 @@ const Testimonial = ({ bgWhite }) => {
 					<div className="mb-4 md:mb-0">
 						<p className="text-lg leading-normal text-jacarta-700 dark:text-white">
 							{
-								"Xhibiter is one of the most exciting, important companies in the world right now because it's the portal to the new digital economy. If you're interested in shaping a new business model for creators, this is the team to join."
+								"RewardRift is one of the most exciting, important companies in the world right now because it's the portal to the new digital economy. If you're interested in shaping a new business model for creators, this is the team to join."
 							}
 						</p>
 						<span className="mt-12 block font-display text-md font-medium text-jacarta-700 dark:text-white">

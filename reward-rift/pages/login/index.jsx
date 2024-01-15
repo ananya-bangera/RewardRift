@@ -27,7 +27,7 @@ const Login = () => {
 
   return (
     <div>
-      <Meta title="Login || Xhibiter | NFT Marketplace Next.js Template" />
+      <Meta title="Login || RewardRift | NFT Marketplace Next.js Template" />
       {/* <!-- Login --> */}
       <section className="relative h-screen">
         <div className="lg:flex lg:h-full">
@@ -44,7 +44,7 @@ const Login = () => {
                 <img
                   src="/images/logo_white.png"
                   className="inline-block max-h-7"
-                  alt="Xhibiter | NFT Marketplace"
+                  alt="RewardRift | NFT Marketplace"
                 />
               </a>
             </Link>

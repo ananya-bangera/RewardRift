@@ -9,7 +9,7 @@ import Testimonial from '../../components/blog/testimonial';
 const Home_6 = () => {
 	return (
 		<>
-			<Meta title="Home 6 || Xhibiter | NFT Marketplace Next.js Template" />
+			<Meta title="Home 6 || RewardRift | NFT Marketplace Next.js Template" />
 			<Hero_6 />
 			<Bids />
 			<Collection_category bgWhite={true} />

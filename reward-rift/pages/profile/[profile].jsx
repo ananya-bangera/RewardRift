@@ -56,7 +56,7 @@ const Edit_user = () => {
 
 	return (
 		<div>
-			<Meta title="Profile || Xhibiter | NFT Marketplace Next.js Template" />
+			<Meta title="Profile || RewardRift | NFT Marketplace Next.js Template" />
 			<div className="pt-[5.5rem] lg:pt-24">
 				{/* <!-- Banner --> */}
 				<div className="relative">

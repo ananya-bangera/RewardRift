@@ -18,7 +18,7 @@ const Hero_8 = () => {
 				<div className="container">
 					<div className="mx-auto max-w-2xl pt-24 text-center">
 						<h1 className="mb-6 font-display text-5xl text-white lg:text-6xl">
-							Welcome to the Xhibiter Universe of Play!
+							Welcome to the RewardRift Universe of Play!
 						</h1>
 						<p className="mx-auto mb-8 max-w-md text-lg leading-normal text-jacarta-50">
 							A place where inspiration starts here. Play your favorite games and earn real money

@@ -17,7 +17,7 @@ const footer = () => {
                   <img
                     src="/images/logo.png"
                     className="max-h-7 dark:hidden"
-                    alt="Xhibiter | NFT Marketplace"
+                    alt="RewardRift | NFT Marketplace"
                   />
                 </a>
               </Link>
@@ -27,7 +27,7 @@ const footer = () => {
                   <img
                     src="/images/logo_white.png"
                     className="hidden max-h-7 dark:block mb-6"
-                    alt="Xhibiter | NFT Marketplace"
+                    alt="RewardRift | NFT Marketplace"
                   />
                 </a>
               </Link>
@@ -85,7 +85,7 @@ const footer = () => {
 
           <div className="flex flex-col items-center justify-between space-y-2 py-8 sm:flex-row sm:space-y-0">
             <span className="dark:text-jacarta-400 text-sm">
-              <span>© {new Date().getFullYear()} Xhibiter — Made by</span>
+              <span>© {new Date().getFullYear()} RewardRift — Made by</span>
               <Link href="https://themeforest.net/user/ib-themes">
                 <a className="hover:text-accent dark:hover:text-white">
                   {" "}

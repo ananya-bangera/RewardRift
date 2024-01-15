@@ -13,7 +13,7 @@ const Services = () => {
 							Start Improving Your Business Today
 						</h2>
 						<p className="text-lg dark:text-jacarta-300">
-							Connect our AI to your exchange account and invest crypto automatically. Xhibiter app
+							Connect our AI to your exchange account and invest crypto automatically. RewardRift app
 							work while you just live.
 						</p>
 					</div>

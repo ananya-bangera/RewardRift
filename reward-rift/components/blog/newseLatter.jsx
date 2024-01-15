@@ -47,7 +47,7 @@ const NewseLatter = ({ bgWhite = true }) => {
 
 				<p className="text-jacarta-700 mx-auto mt-20 max-w-2xl text-center text-lg dark:text-white">
 					Join our mailing list to stay in the loop with our newest feature releases, NFT drops, and
-					tips and tricks for navigating Xhibiter
+					tips and tricks for navigating RewardRift
 				</p>
 
 				<div className="mx-auto mt-7 max-w-md text-center">

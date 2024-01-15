@@ -8,7 +8,7 @@ import { Partners } from '../../components/component';
 const Careers = () => {
 	return (
 		<div className="mt-[95px]">
-			<Meta title="Careers || Xhibiter | NFT Marketplace Next.js Template" />
+			<Meta title="Careers || RewardRift | NFT Marketplace Next.js Template" />
 			<Careers_title />
 			<Positions />
 			<Parks />
