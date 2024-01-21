@@ -35,7 +35,7 @@ const Item = () => {
   let auction_timer = "636234213";
   
   let name = contentData.name;
-  let cid = "QmXBit57gEaZ5ngBto6JRU9srp3Xyf1Wrp7x6hdZdruBeC"; //contentData.cid;
+  let cid =  contentData.cid;
   let image = contentData.image;
   const [imageModal, setImageModal] = useState(false);
   const { address } = useAccount();

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import UserContext from "../components/UserContext";
-import Home_5 from "./home/home_5";
+import Home_5 from "./home/home";
 import dotenv from 'dotenv';
 dotenv.config();
 
