@@ -13,8 +13,8 @@ import SENDER_CONTRACT from "../../abi/contract_address.js";
 import SENDER_ABI from "../../abi/sender.json";
 import GHO_TOKEN from "../../abi/gho_address.js";
 import GHO_ABI from "../../abi/gho.json";
-import RECEIVER_ABI from "../../abi/receiver.json"
-import  RECEIVER_CONTRACT from "../../abi/receiver_contract.js";
+import RECEIVER_ABI from "../../abi/receiver.json";
+import RECEIVER_CONTRACT from "../../abi/receiver_contract.js";
 import { useAccount } from "wagmi";
 
 const Collection = () => {
@@ -39,7 +39,7 @@ const Collection = () => {
       setLikesImage(false);
     }
   };
-  const voteInfluencer = async () => { 
+  const voteInfluencer = async () => {
     const RPCprovider = new ethers.providers.Web3Provider(window.ethereum);
     console.log(SENDER_ABI);
     const sender = new ethers.Contract(
@@ -49,18 +49,25 @@ const Collection = () => {
     );
     console.log(influencerData.account);
     const gho_tok = "10000000000000000000";
-    const gho = new ethers.Contract(GHO_TOKEN ,GHO_ABI, RPCprovider.getSigner(address));
+    const gho = new ethers.Contract(
+      GHO_TOKEN,
+      GHO_ABI,
+      RPCprovider.getSigner(address)
+    );
 
     const tx = await gho.transfer(SENDER_CONTRACT, BigNumber.from(gho_tok));
     await tx.wait();
 
-      console.log(tx);
-    const tx2 = await sender.voteForInfluencer(BigNumber.from(gho_tok), influencerData.account);
+    console.log(tx);
+    const tx2 = await sender.voteForInfluencer(
+      BigNumber.from(gho_tok),
+      influencerData.account
+    );
     await tx2.wait();
     console.log(tx2);
-   }
-  let loggedDet ;
-   const stopFunding = async () => {
+  };
+  let loggedDet;
+  const stopFunding = async () => {
     const RPCprovider = new ethers.providers.Web3Provider(window.ethereum);
     console.log(SENDER_ABI);
     const sender = new ethers.Contract(
@@ -72,43 +79,59 @@ const Collection = () => {
     const tx = await sender.sendVoteData(influencerData.account);
     // console.log(BigNumber.from(tx[0].tokens).toNumber());
     let votersInfo = [];
-    tx.forEach(element => {
+    tx.forEach((element) => {
       votersInfo.push({
         address: element.voter,
-        tokens: BigNumber.from(element.tokens).toString()
-      })
+        tokens: BigNumber.from(element.tokens).toString(),
+      });
     });
-    const loggMsg = JSON.stringify({votersInfo:votersInfo, account: influencerData.account});
-    console.log(loggMsg); 
-    loggedDet = loggMsg;
-    const tx2 = await sender.withdrawTokens(GHO_TOKEN, BigNumber.from("12532609583862916517").toBigInt(),RECEIVER_CONTRACT,loggMsg);
-    await tx2.wait();
-    
-   }
-   const test = async () => {
-    const RPCprovider = new ethers.providers.Web3Provider(window.ethereum);
-    console.log(SENDER_ABI);
-    const sender = new ethers.Contract(
-      SENDER_CONTRACT,
-      SENDER_ABI,
-      RPCprovider.getSigner(address)
-    );
-    console.log(influencerData.account);
-    const tx = await sender.sendVoteData(influencerData.account);
-    // console.log(BigNumber.from(tx[0].tokens).toNumber());
-    let votersInfo = [];
-    tx.forEach(element => {
-      votersInfo.push({
-        address: element.voter,
-        tokens: BigNumber.from(element.tokens).toString()
-      })
+    const loggMsg = JSON.stringify({
+      votersInfo: votersInfo,
+      account: influencerData.account,
     });
-    const loggMsg = JSON.stringify({votersInfo:votersInfo, account: influencerData.account});
     console.log(loggMsg);
     loggedDet = loggMsg;
-   }
+    const tx2 = await sender.withdrawTokens(
+      GHO_TOKEN,
+      BigNumber.from("12532609583862916517").toBigInt(),
+      RECEIVER_CONTRACT,
+      loggMsg
+    );
+    await tx2.wait();
+  };
+  const test = async () => {
+    const RPCprovider = new ethers.providers.Web3Provider(window.ethereum);
+    console.log(SENDER_ABI);
+    const sender = new ethers.Contract(
+      SENDER_CONTRACT,
+      SENDER_ABI,
+      RPCprovider.getSigner(address)
+    );
+    console.log(influencerData.account);
+    const tx = await sender.sendVoteData(influencerData.account);
+    // console.log(BigNumber.from(tx[0].tokens).toNumber());
+    let votersInfo = [];
+    tx.forEach((element) => {
+      votersInfo.push({
+        address: element.voter,
+        tokens: BigNumber.from(element.tokens).toString(),
+      });
+    });
+    const loggMsg = JSON.stringify({
+      votersInfo: votersInfo,
+      account: influencerData.account,
+    });
+    console.log(loggMsg);
+    // loggedDet = loggMsg;
+    const voterDetails = JSON.parse(loggMsg);
+    console.log(voterDetails);
 
-   const distributeFunds = async () => {
+    voterDetails.votersInfo.forEach(async (element) => {});
+    let tx2 = sender.redistributeTokens(BigNumber.from("2500000000000000000").toBigInt(), GHO_TOKEN);
+    await tx2.wait();
+
+  };
+  const distributeFunds = async () => {
     // const RPCprovider = new ethers.providers.Web3Provider(window.ethereum);
     // console.log(SENDER_ABI);
     // const receiver = new ethers.Contract(
@@ -119,10 +142,7 @@ const Collection = () => {
     // const loggedDet = await receiver.getLastReceivedMessageDetails();
     // console.log(loggedDet);
     test();
-
-
-
-   }
+  };
 
   useEffect(async () => {
     // if (itemFor === 'userPage') {
@@ -170,21 +190,21 @@ const Collection = () => {
       <Meta
         title={`Influencer - ${pid} || RewardRift | NFT Marketplace Next.js Template`}
       />
-     
-        <div className="pt-[5.5rem] lg:pt-24">
-          {/* <!-- Banner --> */}
-          <div className="relative h-[300px]">
-            <img
-              src={`${influencerData.image}`}
-              // src ="/images/gradient_light.jpg"
-              className="relative h-[300px] w-full"
-              alt="banner"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-          {/* <!-- end banner --> */}
-          <div className="mb-8 flex items-center space-x-4 whitespace-nowrap">
+
+      <div className="pt-[5.5rem] lg:pt-24">
+        {/* <!-- Banner --> */}
+        <div className="relative h-[300px]">
+          <img
+            src={`${influencerData.image}`}
+            // src ="/images/gradient_light.jpg"
+            className="relative h-[300px] w-full"
+            alt="banner"
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+        {/* <!-- end banner --> */}
+        <div className="mb-8 flex items-center space-x-4 whitespace-nowrap">
           <div className="flex items-center m-8">
             <h1 className="font-display text-jacarta-700 mb-4 text-4xl font-semibold dark:text-white">
               {influencerData.name}
@@ -192,24 +212,38 @@ const Collection = () => {
             <p className="dark:text-jacarta-300 mb-10">{influencerData.desc}</p>
 
             <div className="dark:border-jacarta-600 sm:border-jacarta-100 mt-4 sm:mt-0 sm:w-1/2 sm:border-l sm:pl-4 lg:pl-8">
-              <button
-                className="bg-accent shadow-accent-volume hover:bg-accent-dark inline-block w-[1/2] rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
-                onClick={() => voteInfluencer()}
-              >
-                Fund Influencer
-              </button>
-              {(influencerData.account === address)?(<><button
-                className="bg-accent shadow-accent-volume hover:bg-accent-dark inline-block w-[1/2] rounded-full py-3 px-8 text-center font-semibold m-4 text-white transition-all"
-                onClick={() => stopFunding()}
-              >
-                Withdraw Tokens 
-              </button></>):(<></>)}
-              {(influencerData.account === address)?(<><button
-                className="bg-accent shadow-accent-volume hover:bg-accent-dark inline-block w-[1/2] rounded-full py-3 px-8 text-center font-semibold m-4 text-white transition-all"
-                onClick={() => distributeFunds()}
-              >
-                Distribute Tokens Funded
-              </button></>):(<></>)}
+              {
+                (influencerData.account != address)?(<><button
+                  className="bg-accent shadow-accent-volume hover:bg-accent-dark inline-block w-[1/2] rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
+                  onClick={() => voteInfluencer()}
+                >
+                  Fund Influencer
+                </button></>):(<></>)
+              }
+              {influencerData.account === address ? (
+                <>
+                  <button
+                    className="bg-accent shadow-accent-volume hover:bg-accent-dark inline-block w-[1/2] rounded-full py-3 px-8 text-center font-semibold m-4 text-white transition-all"
+                    onClick={() => stopFunding()}
+                  >
+                    Withdraw Tokens
+                  </button>
+                </>
+              ) : (
+                <></>
+              )}
+              {influencerData.account === address ? (
+                <>
+                  <button
+                    className="bg-accent shadow-accent-volume hover:bg-accent-dark inline-block w-[1/2] rounded-full py-3 px-8 text-center font-semibold m-4 text-white transition-all"
+                    onClick={() => distributeFunds()}
+                  >
+                    Distribute Tokens Funded
+                  </button>
+                </>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </div>

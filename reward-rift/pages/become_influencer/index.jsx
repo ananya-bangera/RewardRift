@@ -43,7 +43,7 @@ const Create = () => {
         SENDER_ABI,
         RPCprovider.getSigner(address)
       );
-      let val = await sender.becomeInfleuncer(influencerData.name, influencerData.description, type, "https://jacobsmedia.com/wp-content/uploads/2016/10/shutterstock_292741865.jpg");
+      let val = await sender.becomeInfleuncer(influencerData.name, influencerData.description, type, "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/76b0df70-f0c8-41ec-8a8e-df64f841f04c/der5m8m-68261682-18d8-4591-b770-efb2a844ff4a.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzc2YjBkZjcwLWYwYzgtNDFlYy04YThlLWRmNjRmODQxZjA0Y1wvZGVyNW04bS02ODI2MTY4Mi0xOGQ4LTQ1OTEtYjc3MC1lZmIyYTg0NGZmNGEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.kiTDMkrcLvlb8_mERz5R5pZ8lovwtK81xhmi360r74c");
       await val.wait();
       console.log(val);
 

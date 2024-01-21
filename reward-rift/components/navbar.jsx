@@ -71,12 +71,12 @@ const Navbar = () => {
 									<a className="shrink-0 lg:mr-14">
 										<img
 											src="/images/logo.png"
-											className="max-h-7 dark:hidden"
+											className="max-h-70 dark:hidden"
 											alt="RewardRift | NFT Marketplace"
 										/>
 										<img
-											src="/images/logo_white.png"
-											className="hidden max-h-7 dark:block"
+											src="/images/logo.png"
+											className="hidden max-h-70 dark:block"
 											alt="RewardRift | NFT Marketplace"
 										/>
 									</a>
@@ -107,7 +107,7 @@ const Navbar = () => {
 								<a className="shrink-0 hidden dark:block">
 									<img
 										src="/images/logo_white.png"
-										className="max-h-7 h-auto"
+										className="max-h-70 h-auto"
 										alt="RewardRift | NFT Marketplace"
 									/>
 								</a>
@@ -235,12 +235,12 @@ const Navbar = () => {
 									<a className="shrink-0 lg:mr-14">
 										<img
 											src="/images/logo.png"
-											className="max-h-7 dark:hidden"
+											className="max-h-50 dark:hidden"
 											alt="RewardRift | NFT Marketplace"
 										/>
 										<img
-											src="/images/logo_white.png"
-											className="hidden max-h-7 dark:block"
+											src="/images/logo.png"
+											className="hidden max-h-50 dark:block"
 											alt="RewardRift | NFT Marketplace"
 										/>
 									</a>
@@ -276,11 +276,11 @@ const Navbar = () => {
 							) : (
 								<Link href="/">
 									<a className="shrink-0">
-										<img src="/images/logo.png" alt="" className="max-h-7 h-auto dark:hidden" />
+										<img src="/images/logo.png" alt="" className="max-h-20 h-auto dark:hidden" />
 
 										<img
-											src="/images/logo_white.png"
-											className="max-h-7 h-auto hidden dark:block"
+											src="/images/logo.png"
+											className="max-h-20 h-auto hidden dark:block"
 											alt="RewardRift | NFT Marketplace"
 										/>
 									</a>

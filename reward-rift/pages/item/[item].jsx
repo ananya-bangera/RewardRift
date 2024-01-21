@@ -12,22 +12,58 @@ import Likes from "../../components/likes";
 import Meta from "../../components/Meta";
 import { useDispatch } from "react-redux";
 import { bidsModalShow } from "../../redux/counterSlice";
+import { BigNumber, ethers } from "ethers";
+import SENDER_CONTRACT from "../../abi/contract_address.js";
+import SENDER_ABI from "../../abi/sender.json";
+import GHO_TOKEN from "../../abi/gho_address.js";
+import GHO_ABI from "../../abi/gho.json";
+import RECEIVER_ABI from "../../abi/receiver.json"
+import  RECEIVER_CONTRACT from "../../abi/receiver_contract.js";
+import { useAccount } from "wagmi";
 
 const Item = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const pid = router.query.item;
   const contentData = router.query;
+  const ownerImage = contentData.ownerImage;
   console.log(contentData);
   let id = contentData.id;
   let text = contentData.text;
   let likes = 20;
   let creatorname = contentData.creatorname;
   let auction_timer = "636234213";
+  
   let name = contentData.name;
   let cid = "QmXBit57gEaZ5ngBto6JRU9srp3Xyf1Wrp7x6hdZdruBeC"; //contentData.cid;
   let image = contentData.image;
   const [imageModal, setImageModal] = useState(false);
+  const { address } = useAccount();
+  const voteForContent = async() => {
+	const RPCprovider = new ethers.providers.Web3Provider(window.ethereum);
+	const sender = new ethers.Contract(
+	  SENDER_CONTRACT,
+	  SENDER_ABI,
+	  RPCprovider.getSigner(address)
+	);
+	const gho = new ethers.Contract(
+	  GHO_TOKEN,
+	  GHO_ABI,
+	  RPCprovider.getSigner(address)
+	);
+	const receiver = new ethers.Contract(
+	  RECEIVER_CONTRACT,
+	  RECEIVER_ABI,
+	  RPCprovider.getSigner(address)
+	);
+	const tx = await sender.voteForContent(BigNumber.from("10000000000000000000").toBigInt(), SENDER_CONTRACT);
+	await tx.wait()
+	console.log(tx);
+	const tx2 = await gho.transfer(RECEIVER_CONTRACT, BigNumber.from("10000000000000000000").toBigInt());
+	tx2.wait();
+	console.log(tx2);
+	
+  }
 
   return (
     <>
@@ -64,7 +100,7 @@ const Item = () => {
                 className={imageModal ? "modal fade show block" : "modal fade"}
               >
                 <div className="modal-dialog !my-0 flex h-full max-w-4xl items-center justify-center">
-                  <img src={image} alt={name} className="h-full rounded-2xl" />
+                  <img src={`https://ipfs.io/ipfs/${image}`} alt={name} className="h-full rounded-2xl" />
                 </div>
 
                 <button
@@ -156,7 +192,7 @@ const Item = () => {
                       <Link href="/user/avatar_6">
                         <a className="relative block">
                           <img
-                            src={image}
+                            src={ownerImage}
                             alt={creatorname}
                             className="rounded-2lg h-12 w-12"
                             loading="lazy"
@@ -193,7 +229,7 @@ const Item = () => {
                       <Link href="/user/avatar_6">
                         <a className="relative block">
                           <img
-                            src={image}
+                            src={ownerImage}
                             alt={creatorname}
                             className="rounded-2lg h-12 w-12"
                             loading="lazy"
@@ -246,7 +282,7 @@ const Item = () => {
                           <Link href="#">
                             <a className="relative block">
                               <img
-                                src="/images/avatars/avatar_4.jpg"
+                                src={`https://ipfs.io/ipfs/${image}`}
                                 alt="avatar"
                                 className="rounded-2lg h-12 w-12"
                                 loading="lazy"
@@ -286,7 +322,7 @@ const Item = () => {
                   <Link href="#">
                     <button
                       className="bg-accent shadow-accent-volume hover:bg-accent-dark inline-block w-full rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
-                      onClick={() => dispatch(bidsModalShow())}
+                      onClick={() => voteForContent()}
                     >
                       Vote Now
                     </button>

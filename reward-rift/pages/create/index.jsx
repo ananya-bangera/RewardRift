@@ -23,6 +23,7 @@ const Create = () => {
     "GIF",
     "SVG",
     "MP4",
+    "MKV",
     "WEBM",
     "MP3",
     "WAV",
@@ -31,6 +32,7 @@ const Create = () => {
     "GLTF",
   ];
   const [file, setFile] = useState();
+  const [file2, setFile2] = useState();
   const { address } = useAccount();
 
   const [createData, setCreateData] = useState({});
@@ -41,7 +43,7 @@ const Create = () => {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIwMGExYzdmYi02MzI2LTQxNDItODkzMC1iZGUxOGRlYzZmNGMiLCJlbWFpbCI6ImFuYW55YS5iYW5nZXJhMTAwQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfSx7ImlkIjoiTllDMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiJkNDQzZTlmNWJmNDE0MWU0NGI1NCIsInNjb3BlZEtleVNlY3JldCI6IjBhYWIwNTYyMzQ4Y2IwZGY4MGUxNGFlNTg0NGM2Mzc3NDJiZGI5MzM2YmVkNzg5ODFiZTk2NmI1MGI4MmEzODUiLCJpYXQiOjE3MDU3NzYxMjZ9.sxI3IVGysPobNP4aHYfPrgqzKxm6CFOg3aqkb25nKFo";
 
   const dispatch = useDispatch();
-const createdContent = async (cid) => {
+const createdContent = async (cid, cid2) => {
   const RPCprovider = new ethers.providers.Web3Provider(window.ethereum);
       console.log(SENDER_ABI);
       const sender = new ethers.Contract(
@@ -51,19 +53,20 @@ const createdContent = async (cid) => {
       );
       
 
-      let val = await sender.createContent(createData.name, cid);
+      let val = await sender.createContent(createData.name, cid2,cid);
       await val.wait();
       console.log(createData, cid);
 }
 
   const pinFileToIPFS = async () => {
+    let cid,cid2;
     const formData = new FormData();
 
     // const file = fs.createReadStream(src)
     formData.append("file", file);
 
     const pinataMetadata = JSON.stringify({
-      name: "File name",
+      name: file.name,
     });
     formData.append("pinataMetadata", pinataMetadata);
 
@@ -84,16 +87,54 @@ const createdContent = async (cid) => {
           },
         }
       );
-      const cid = res.data.IpfsHash;
+       cid = res.data.IpfsHash;
      
-      await createdContent(cid);
+      
     } catch (error) {
       console.log(error);
     }
+    const formData2 = new FormData();
+
+    // const file = fs.createReadStream(src)
+    formData2.append("file", file2);
+
+    const pinataMetadata2 = JSON.stringify({
+      name: file2.name,
+    });
+    formData2.append("pinataMetadata", pinataMetadata2);
+
+    const pinataOptions2 = JSON.stringify({
+      cidVersion: 0,
+    });
+    formData2.append("pinataOptions", pinataOptions2);
+    console.log("called");
+    try {
+      const res2 = await axios.post(
+        "https://api.pinata.cloud/pinning/pinFileToIPFS",
+        formData2,
+        {
+          maxBodyLength: "Infinity",
+          headers: {
+            "Content-Type": `multipart/form-data; boundary=${formData2._boundary}`,
+            Authorization: `Bearer ${JWT}`,
+          },
+        }
+      );
+       cid2 = res2.data.IpfsHash;
+     
+      
+    } catch (error) {
+      console.log(error);
+    }
+   console.log(cid,cid2);
+    await createdContent(cid, cid2);
   };
 
   const handleChange = async(file) => {
     await setFile(file);
+  };
+  const handleChange2 = async(file2) => {
+    await setFile2(file2);
   };
 
   const popupItemData = [
@@ -154,7 +195,7 @@ const createdContent = async (cid) => {
             {/* <!-- File Upload --> */}
             <div className="mb-6">
               <label className="font-display text-jacarta-700 mb-2 block dark:text-white">
-                Image, Video, Audio, or 3D Model
+               Video for your Content
                 <span className="text-red">*</span>
               </label>
 
@@ -181,13 +222,59 @@ const createdContent = async (cid) => {
                     <path d="M16 13l6.964 4.062-2.973.85 2.125 3.681-1.732 1-2.125-3.68-2.223 2.15L16 13zm-2-7h2v2h5a1 1 0 0 1 1 1v4h-2v-3H10v10h4v2H9a1 1 0 0 1-1-1v-5H6v-2h2V9a1 1 0 0 1 1-1h5V6zM4 14v2H2v-2h2zm0-4v2H2v-2h2zm0-4v2H2V6h2zm0-4v2H2V2h2zm4 0v2H6V2h2zm4 0v2h-2V2h2zm4 0v2h-2V2h2z" />
                   </svg>
                   <p className="dark:text-jacarta-300 mx-auto max-w-xs text-xs">
-                    JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max
+                     MP4, WEBM, MP3, WAV Max
                     size: 100 MB
                   </p>
                 </div>
                 <div className="dark:bg-jacarta-600 bg-jacarta-50 absolute inset-4 cursor-pointer rounded opacity-0 group-hover:opacity-100 ">
                   <FileUploader
                     handleChange={handleChange}
+                    name="file"
+                    types={fileTypes}
+                    classes="file-drag"
+                    maxSize={100}
+                    minSize={0}
+                  />
+                </div>
+              </div>
+            </div>
+            {/* <!-- File Upload --> */}
+            <div className="mb-6">
+              <label className="font-display text-jacarta-700 mb-2 block dark:text-white">
+               Thumbnail for your Content
+                <span className="text-red">*</span>
+              </label>
+
+              {file2 ? (
+                <p className="dark:text-jacarta-300 text-2xs mb-3">
+                  successfully uploaded : {file2.name}
+                </p>
+              ) : (
+                <p className="dark:text-jacarta-300 text-2xs mb-3">
+                  Drag or choose your file to upload
+                </p>
+              )}
+
+              <div className="dark:bg-jacarta-700 dark:border-jacarta-600 border-jacarta-100 group relative flex max-w-md flex-col items-center justify-center rounded-lg border-2 border-dashed bg-white py-20 px-5 text-center">
+                <div className="relative z-10 cursor-pointer">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    className="fill-jacarta-500 mb-4 inline-block dark:fill-white"
+                  >
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path d="M16 13l6.964 4.062-2.973.85 2.125 3.681-1.732 1-2.125-3.68-2.223 2.15L16 13zm-2-7h2v2h5a1 1 0 0 1 1 1v4h-2v-3H10v10h4v2H9a1 1 0 0 1-1-1v-5H6v-2h2V9a1 1 0 0 1 1-1h5V6zM4 14v2H2v-2h2zm0-4v2H2v-2h2zm0-4v2H2V6h2zm0-4v2H2V2h2zm4 0v2H6V2h2zm4 0v2h-2V2h2zm4 0v2h-2V2h2z" />
+                  </svg>
+                  <p className="dark:text-jacarta-300 mx-auto max-w-xs text-xs">
+                    JPG, PNG, SVG Max
+                    size: 100 MB
+                  </p>
+                </div>
+                <div className="dark:bg-jacarta-600 bg-jacarta-50 absolute inset-4 cursor-pointer rounded opacity-0 group-hover:opacity-100 ">
+                  <FileUploader
+                    handleChange={handleChange2}
                     name="file"
                     types={fileTypes}
                     classes="file-drag"

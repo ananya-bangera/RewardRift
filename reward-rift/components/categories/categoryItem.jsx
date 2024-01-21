@@ -34,7 +34,7 @@ const CategoryItem = ({influencerData}) => {
       RPCprovider.getSigner(address)
     );
 	
-    console.log(influencerData.account);
+    // console.log(influencerData.account);
     let  value = await sender.listOfCreatedContents("0x4A9CF09B996F0Ddf5498201f1D6cb8f6C88e3e0e");
     console.log(value.length);
     setCategories(value);
@@ -64,7 +64,7 @@ const CategoryItem = ({influencerData}) => {
         } = item;
         // id = BigNumber.from(id).toNumber();
 
-        image = 'https://ipfs.io/ipfs/QmXaGYymY9rBdNzHKdhsEjmx8YfiN56jS16jSEBudHk6xx'
+        // image = 'https://ipfs.io/ipfs/QmXaGYymY9rBdNzHKdhsEjmx8YfiN56jS16jSEBudHk6xx'
         // const itemLink = image
         //   .split("/")
         //   .slice(-1)
@@ -78,8 +78,8 @@ const CategoryItem = ({influencerData}) => {
                 {/* <Link href={`/item/${itemLink}`}> */}
                   <a>
                     <img
-                      src={image}
-                      // src='https://ipfs.io/ipfs/QmXaGYymY9rBdNzHKdhsEjmx8YfiN56jS16jSEBudHk6xx'
+                      // src={image}
+                      src={`https://ipfs.io/ipfs/${image}`}
                       alt="item 5"
                       className="w-full h-[230px] rounded-[0.625rem] object-cover"
                     />
@@ -117,7 +117,7 @@ const CategoryItem = ({influencerData}) => {
                 </div> */}
               </figure>
               <div className="mt-7 flex items-center justify-between">
-                <Link href={{pathname:`/item/${id}`, query:{cid:cid,id:id, image: image, name: name, creatorname: influencerData.name, text : influencerData.desc}}}>
+                <Link href={{pathname:`/item/${id}`, query:{account: influencerData.account, cid:cid,id:id, image: image, ownerImage: influencerData.image , name: name, creatorname: influencerData.name, text : influencerData.desc}}}>
                   <a>
                     <span className="font-display text-jacarta-700 hover:text-accent text-base dark:text-white">
                       {name}

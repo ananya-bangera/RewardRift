@@ -163,185 +163,72 @@ const MblNavbar = ({ theme }) => {
   }, [dispatch, navItemValue, router]);
 
   const homenavData = [
+    // {
+    //   id: 1,
+    //   text: "home 1",
+    //   url: "/",
+    //   New: false,
+    // },
+    // {
+    //   id: 2,
+    //   text: "home 2",
+    //   url: "/home/home_2",
+    //   New: false,
+    // },
+    // {
+    //   id: 3,
+    //   text: "home 3",
+    //   url: "/home/home_3",
+    //   New: false,
+    // },
+    // {
+    //   id: 4,
+    //   text: "home 4",
+    //   url: "/home/home_4",
+    //   New: false,
+    // },
     {
       id: 1,
-      text: "home 1",
-      url: "/",
+      text: "Home",
+      url: "/home/home",
       New: false,
-    },
-    {
-      id: 2,
-      text: "home 2",
-      url: "/home/home_2",
-      New: false,
-    },
-    {
-      id: 3,
-      text: "home 3",
-      url: "/home/home_3",
-      New: false,
-    },
-    {
-      id: 4,
-      text: "home 4",
-      url: "/home/home_4",
-      New: false,
-    },
-    {
-      id: 5,
-      text: "home 5",
-      url: "/home/home_5",
-      New: false,
-    },
-    {
-      id: 6,
-      text: "home 6",
-      url: "/home/home_6",
-      New: false,
-    },
-    {
-      id: 7,
-      text: "home 7",
-      url: "/home/home_7",
-      New: true,
-    },
-    {
-      id: 8,
-      text: "home 8",
-      url: "/home/home_8",
-      New: true,
-    },
+    }
+    // {
+    //   id: 6,
+    //   text: "home 6",
+    //   url: "/home/home_6",
+    //   New: false,
+    // },
+    // {
+    //   id: 7,
+    //   text: "home 7",
+    //   url: "/home/home_7",
+    //   New: true,
+    // },
+    // {
+    //   id: 8,
+    //   text: "home 8",
+    //   url: "/home/home_8",
+    //   New: true,
+    // },
   ];
 
   const pageTextData = [
     {
       id: 9,
-      text: "Case Studies",
-      href: "/case-studies",
-      New: true,
+      text: "Become an Influencer",
+      href: "/become_influencer",
+      // New: true,
     },
-    {
-      id: 10,
-      text: "Single Case Study",
-      href: "/case-studies/case_study_1",
-      New: true,
-    },
-    {
-      id: 11,
-      text: "Careers",
-      href: "/careers",
-      New: true,
-    },
-    {
-      id: 12,
-      text: "Item Details",
-      href: "/item/item_20",
-      New: false,
-    },
-    {
-      id: 13,
-      text: "Explore Collections",
-      href: "/collection/explore_collection",
-      New: false,
-    },
-    {
-      id: 14,
-      text: "Collection",
-      href: "/collection/avatar_1",
-      New: false,
-    },
-    {
-      id: 15,
-      text: "Activity",
-      href: "/activity",
-      New: false,
-    },
-    {
-      id: 16,
-      text: "Rankings",
-      href: "/rankings",
-      New: false,
-    },
-    {
-      id: 17,
-      text: "User",
-      href: "/user/avatar_6",
-      New: false,
-    },
-    {
-      id: 18,
-      text: "Edit Profile",
-      href: "/profile/user_avatar",
-      New: false,
-    },
-    {
-      id: 19,
-      text: "About",
-      href: "/about",
-      New: false,
-    },
-    {
-      id: 20,
-      text: "Contact",
-      href: "/contact",
-      New: false,
-    },
-    {
-      id: 21,
-      text: "Wallet",
-      href: "/wallet",
-      New: false,
-    },
-    {
-      id: 22,
-      text: "Login",
-      href: "/login",
-      New: false,
-    },
-    {
-      id: 23,
-      text: "Page 404",
-      href: "/404",
-      New: false,
-    },
-    {
-      id: 24,
-      text: "Terms Of Service",
-      href: "/tarms",
-      New: false,
-    },
+    
   ];
 
   const resourcesData = [
     {
-      id: 25,
-      text: "Help Center",
-      href: "/help_center",
-    },
-    {
-      id: 26,
-      text: "Platform Status",
-      href: "/platform_status",
-    },
-    {
-      id: 27,
-      text: "Partners",
-      href: "/partners",
-    },
-    {
-      id: 28,
-      text: "Blog",
-      href: "/blog",
-    },
-    {
-      id: 29,
-      text: "Single Post",
-      href: "/single_post/post_1",
-    },
-    {
-      id: 30,
-      text: "Newsletter",
-      href: "/newsletter",
+      id: 10,
+      text: "Explore Influencers",
+      href: "/collection/explore_collection",
+      // New: true,
     },
   ];
 
@@ -362,14 +249,14 @@ const MblNavbar = ({ theme }) => {
             <a>
               <img
                 src="/images/logo.png"
-                className="max-h-7 dark:hidden"
+                className="max-h-20 dark:hidden"
                 alt="RewardRift | NFT Marketplace"
               />
 
               <img
-                src="/images/logo_white.png"
+                src="/images/logo.png"
                 alt="RewardRift | NFT Marketplace"
-                className="max-h-7 dark:block hidden"
+                className="max-h-20 dark:block hidden"
               />
             </a>
           </Link>
@@ -486,7 +373,7 @@ const MblNavbar = ({ theme }) => {
                 onClick={(e) => handleItemDropdown(e)}
               >
                 <span className={navText === "pages" ? "text-accent" : ""}>
-                  Pages
+                   Influencer
                 </span>
 
                 <i className="lg:hidden">
@@ -542,7 +429,7 @@ const MblNavbar = ({ theme }) => {
                 })}
               </ul>
             </li>
-            <li className="js-nav-dropdown nav-item dropdown group relative">
+            {/* <li className="js-nav-dropdown nav-item dropdown group relative">
               <button
                 className={
                   router.asPath === "/home/home_3"
@@ -552,7 +439,7 @@ const MblNavbar = ({ theme }) => {
                 onClick={(e) => handleItemDropdown(e)}
               >
                 <span className={navText === "collection" ? "text-accent" : ""}>
-                  Explore
+                  Explore Influencer
                 </span>
 
                 <i className="lg:hidden">
@@ -843,7 +730,7 @@ const MblNavbar = ({ theme }) => {
                   </Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
             <li className="js-nav-dropdown group relative">
               <button
                 className={
@@ -854,7 +741,7 @@ const MblNavbar = ({ theme }) => {
                 onClick={(e) => handleItemDropdown(e)}
               >
                 <span className={navText === "resources" ? "text-accent" : ""}>
-                  Resources
+                  Explore
                 </span>
 
                 <i className="lg:hidden">
@@ -918,7 +805,7 @@ const MblNavbar = ({ theme }) => {
                     }
                   >
                     <span className={navText === "create" ? "text-accent" : ""}>
-                      Create 
+                      Create Content
                     </span>
                   </button>
                 </a>
