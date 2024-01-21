@@ -1,7 +1,5 @@
 <h1 align="center">
-  <a href="https://github.com/ananya-bangera/RewardRift">
-    <img src="screenshots/face-id.png" alt="Smart Advertising" width="285" height="150">
-  </a>
+
   <br>
   RewardRift 📲
 </h1>
