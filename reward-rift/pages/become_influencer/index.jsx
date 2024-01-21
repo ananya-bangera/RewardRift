@@ -20,81 +20,34 @@ const Create = () => {
   const fileTypes = [
     "JPG",
     "PNG",
-    "GIF",
-    "SVG",
-    "MP4",
-    "WEBM",
-    "MP3",
-    "WAV",
-    "OGG",
-    "GLB",
-    "GLTF",
+    
   ];
-  const [file, setFile] = useState();
+  const [type, setType] = useState("Select");
+  const [file, setFile] = useState("");
   const { address } = useAccount();
 
-  const [createData, setCreateData] = useState({});
-  const axios = require("axios");
-  const FormData = require("form-data");
-  const fs = require("fs");
-  const JWT =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIwMGExYzdmYi02MzI2LTQxNDItODkzMC1iZGUxOGRlYzZmNGMiLCJlbWFpbCI6ImFuYW55YS5iYW5nZXJhMTAwQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfSx7ImlkIjoiTllDMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiJkNDQzZTlmNWJmNDE0MWU0NGI1NCIsInNjb3BlZEtleVNlY3JldCI6IjBhYWIwNTYyMzQ4Y2IwZGY4MGUxNGFlNTg0NGM2Mzc3NDJiZGI5MzM2YmVkNzg5ODFiZTk2NmI1MGI4MmEzODUiLCJpYXQiOjE3MDU3NzYxMjZ9.sxI3IVGysPobNP4aHYfPrgqzKxm6CFOg3aqkb25nKFo";
-
   const dispatch = useDispatch();
-const createdContent = async (cid) => {
-  const RPCprovider = new ethers.providers.Web3Provider(window.ethereum);
+
+  const handleChange = (file) => {
+    setFile(file.name);
+  };
+  const [influencerData, setInfluencerData] = useState({})
+  const createInfluencer = async () => {
+    console.log(influencerData);
+    console.log(type);
+    //    function becomeInfleuncer(string memory _name, string memory _desc,  string memory _category, string memory _image) external {
+      const RPCprovider = new ethers.providers.Web3Provider(window.ethereum);
       console.log(SENDER_ABI);
       const sender = new ethers.Contract(
         SENDER_CONTRACT,
         SENDER_ABI,
         RPCprovider.getSigner(address)
       );
-      
-
-      let val = await sender.createContent(createData.name, cid);
+      let val = await sender.becomeInfleuncer(influencerData.name, influencerData.description, type, "https://jacobsmedia.com/wp-content/uploads/2016/10/shutterstock_292741865.jpg");
       await val.wait();
-      console.log(createData, cid);
-}
+      console.log(val);
 
-  const pinFileToIPFS = async () => {
-    const formData = new FormData();
-
-    // const file = fs.createReadStream(src)
-    formData.append("file", file);
-
-    const pinataMetadata = JSON.stringify({
-      name: "File name",
-    });
-    formData.append("pinataMetadata", pinataMetadata);
-
-    const pinataOptions = JSON.stringify({
-      cidVersion: 0,
-    });
-    formData.append("pinataOptions", pinataOptions);
-    console.log("called");
-    try {
-      const res = await axios.post(
-        "https://api.pinata.cloud/pinning/pinFileToIPFS",
-        formData,
-        {
-          maxBodyLength: "Infinity",
-          headers: {
-            "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
-            Authorization: `Bearer ${JWT}`,
-          },
-        }
-      );
-      const cid = res.data.IpfsHash;
-     
-      await createdContent(cid);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleChange = async(file) => {
-    await setFile(file);
-  };
+  }
 
   const popupItemData = [
     {
@@ -130,10 +83,12 @@ const createdContent = async (cid) => {
         </picture>
         <div className="container">
           <h1 className="font-display text-jacarta-700 py-16 text-center text-4xl font-medium dark:text-white">
-            Create Content
+            Become Influencer
           </h1>
 
           <div className="mx-auto max-w-[48.125rem]">
+            
+
             {/* <!-- Name --> */}
             <div className="mb-6">
               <label
@@ -143,16 +98,57 @@ const createdContent = async (cid) => {
                 Name<span className="text-red">*</span>
               </label>
               <input
-              onChange={(e) => setCreateData({ ...createData, name: e.target.value })}
                 type="text"
                 id="item-name"
+                onChange={(e) => setInfluencerData({...influencerData, name: e.target.value})}
                 className="dark:bg-jacarta-700 border-jacarta-100 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:placeholder:text-jacarta-300 w-full rounded-lg py-3 px-3 hover:ring-2 dark:text-white"
-                placeholder="Item name"
+                placeholder="your name"
                 required
               />
             </div>
-            {/* <!-- File Upload --> */}
+
+          
+
+            {/* <!-- External Link -->
             <div className="mb-6">
+              <label
+                htmlFor="item-external-link"
+                className="font-display text-jacarta-700 mb-2 block dark:text-white"
+              >
+                Image link
+              </label>
+              
+              <input
+                type="url"
+                id="item-external-link"
+                className="dark:bg-jacarta-700 border-jacarta-100 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:placeholder:text-jacarta-300 w-full rounded-lg py-3 px-3 hover:ring-2 dark:text-white"
+                placeholder="https://yoursite.io/item/123"
+              />
+            </div> */}
+
+            {/* <!-- Description --> */}
+            <div className="mb-6">
+              <label
+                htmlFor="item-description"
+                className="font-display text-jacarta-700 mb-2 block dark:text-white"
+              >
+                Description
+              </label>
+              <p className="dark:text-jacarta-300 text-2xs mb-3">
+                The description will be included on the {"channel's"} detail page
+                underneath its image. Markdown syntax is supported.
+              </p>
+              <textarea
+              onChange={(e) => setInfluencerData({...influencerData, description: e.target.value})}
+                id="item-description"
+                className="dark:bg-jacarta-700 border-jacarta-100 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:placeholder:text-jacarta-300 w-full rounded-lg py-3 px-3 hover:ring-2 dark:text-white"
+                rows="4"
+                required
+                placeholder="Provide a detailed description of your channel."
+              ></textarea>
+            </div>
+{/* <!-- File Upload --> */}
+<div className="mb-6">
               <label className="font-display text-jacarta-700 mb-2 block dark:text-white">
                 Image, Video, Audio, or 3D Model
                 <span className="text-red">*</span>
@@ -160,7 +156,7 @@ const createdContent = async (cid) => {
 
               {file ? (
                 <p className="dark:text-jacarta-300 text-2xs mb-3">
-                  successfully uploaded : {file.name}
+                  successfully uploaded : {file}
                 </p>
               ) : (
                 <p className="dark:text-jacarta-300 text-2xs mb-3">
@@ -181,7 +177,7 @@ const createdContent = async (cid) => {
                     <path d="M16 13l6.964 4.062-2.973.85 2.125 3.681-1.732 1-2.125-3.68-2.223 2.15L16 13zm-2-7h2v2h5a1 1 0 0 1 1 1v4h-2v-3H10v10h4v2H9a1 1 0 0 1-1-1v-5H6v-2h2V9a1 1 0 0 1 1-1h5V6zM4 14v2H2v-2h2zm0-4v2H2v-2h2zm0-4v2H2V6h2zm0-4v2H2V2h2zm4 0v2H6V2h2zm4 0v2h-2V2h2zm4 0v2h-2V2h2z" />
                   </svg>
                   <p className="dark:text-jacarta-300 mx-auto max-w-xs text-xs">
-                    JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max
+                    JPG, PNG, Max
                     size: 100 MB
                   </p>
                 </div>
@@ -197,51 +193,6 @@ const createdContent = async (cid) => {
                 </div>
               </div>
             </div>
-
-            
-
-            {/* <!-- External Link --> */}
-            {/* <div className="mb-6">
-              <label
-                htmlFor="item-external-link"
-                className="font-display text-jacarta-700 mb-2 block dark:text-white"
-              >
-                External link
-              </label>
-              <p className="dark:text-jacarta-300 text-2xs mb-3">
-                We will include a link to this URL on this {"item's"} detail
-                page, so that users can click to learn more about it. You are
-                welcome to link to your own webpage with more details.
-              </p>
-              <input
-                type="url"
-                id="item-external-link"
-                className="dark:bg-jacarta-700 border-jacarta-100 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:placeholder:text-jacarta-300 w-full rounded-lg py-3 px-3 hover:ring-2 dark:text-white"
-                placeholder="https://yoursite.io/item/123"
-              />
-            </div> */}
-
-            {/* <!-- Description --> */}
-            {/* <div className="mb-6">
-              <label
-                htmlFor="item-description"
-                className="font-display text-jacarta-700 mb-2 block dark:text-white"
-              >
-                Description
-              </label>
-              <p className="dark:text-jacarta-300 text-2xs mb-3">
-                The description will be included on the {"item's"} detail page
-                underneath its image. Markdown syntax is supported.
-              </p>
-              <textarea
-                id="item-description"
-                className="dark:bg-jacarta-700 border-jacarta-100 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:placeholder:text-jacarta-300 w-full rounded-lg py-3 px-3 hover:ring-2 dark:text-white"
-                rows="4"
-                required
-                placeholder="Provide a detailed description of your item."
-              ></textarea>
-            </div> */}
-
             {/* <!-- Collection --> */}
             {/* <div className="relative">
               <div>
@@ -283,8 +234,8 @@ const createdContent = async (cid) => {
                   data={collectionDropdown2_data}
                   collection={true}
                 />
-              </div>
-            </div>  */}
+              </div> */}
+            {/* </div> */}
 
             {/* <!-- Properties --> */}
             {/* {popupItemData.map(({ id, name, text, icon }) => {
@@ -324,9 +275,9 @@ const createdContent = async (cid) => {
                   </div>
                 </div>
               );
-            })} */}
+            })}
 
-            {/* <Proparties_modal /> */}
+            <Proparties_modal /> */}
 
             {/* <!-- Properties --> */}
 
@@ -468,19 +419,19 @@ const createdContent = async (cid) => {
             </div> */}
 
             {/* <!-- Blockchain --> */}
-            {/* <div className="mb-6">
+            <div className="mb-6">
               <label
                 htmlFor="item-supply"
                 className="font-display text-jacarta-700 mb-2 block dark:text-white"
               >
-                Blockchain
+                Category
               </label>
 
               {/* dropdown */}
-              {/*<div className="dropdown relative mb-4 cursor-pointer ">
-                <Collection_dropdown2 data={EthereumDropdown2_data} />
+              <div className="dropdown relative mb-4 cursor-pointer ">
+                <Collection_dropdown2 data={EthereumDropdown2_data} setType={setType} />
               </div>
-            </div> */}
+            </div>
 
             {/* <!-- Freeze metadata --> */}
             {/* <div className="mb-6">
@@ -534,8 +485,8 @@ const createdContent = async (cid) => {
 
             {/* <!-- Submit --> */}
             <button
-              onClick={() => pinFileToIPFS()}
               type="submit"
+              onClick={() => createInfluencer()}
               className="bg-accent-lighter cursor-default rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
             >
               Create

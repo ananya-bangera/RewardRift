@@ -5,8 +5,9 @@ import CategoryItem from './categoryItem';
 import { useDispatch } from 'react-redux';
 import { updateTrendingCategoryItemData } from '../../redux/counterSlice';
 
-const FilterCategoryItem = () => {
+const FilterCategoryItem = ({influencerData}) => {
 	const dispatch = useDispatch();
+	console.log(influencerData);
 
 	useEffect(() => {
 		dispatch(updateTrendingCategoryItemData(trendingCategoryData.slice(0, 8)));
@@ -16,7 +17,7 @@ const FilterCategoryItem = () => {
 		<div>
 			{/* <!-- Filter --> */}
 			<Collection_category_filter />
-			<CategoryItem />
+			<CategoryItem influencerData={influencerData} />
 		</div>
 	);
 };

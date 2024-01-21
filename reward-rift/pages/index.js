@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import UserContext from "../components/UserContext";
 import Home_5 from "./home/home_5";
+import dotenv from 'dotenv';
+dotenv.config();
 
 export default function Home() {
   const { scrollRef } = useContext(UserContext);

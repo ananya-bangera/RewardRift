@@ -206,7 +206,7 @@ const items_data = [
 		ownerName: '@051_Hart',
 		auction_timer: '636234213',
 		text: 'Neque aut veniam consectetur magnam libero, natus eius numquam reprehenderit hic at, excepturi repudiandae magni optio odio doloribus? Facilisi lobortisal morbi fringilla urna amet sed ipsum.',
-		title: 'MadeByM1KE',
+		title: 'MadeByM1KE2',
 	},
 	{
 		id: 'item_17',

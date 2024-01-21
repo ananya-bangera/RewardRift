@@ -1,38 +1,30 @@
 const tranding_category_filter = [
+  { id: "All", text: "All" },
   {
-    id: 0,
-    text: "all",
-  },
-  {
-    id: 1,
+    id: "Art",
     svg: "art",
-    text: "art",
+    text: "Art",
   },
 
   {
-    id: 2,
+    id: "Sports",
     svg: "collection",
-    text: "Collectibles",
+    text: "Sports",
   },
   {
-    id: 3,
-    svg: "domain",
-    text: "domain",
-  },
-  {
-    id: 4,
+    id: "Music",
     svg: "music",
-    text: "music",
+    text: "Music",
   },
   {
-    id: 5,
+    id: "Photography",
     svg: "photography",
-    text: "photography",
+    text: "Photography",
   },
   {
-    id: 6,
+    id: "Virtual World",
     svg: "world",
-    text: "virtual world",
+    text: "Virtual World",
   },
 ];
 

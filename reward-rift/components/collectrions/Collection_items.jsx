@@ -8,9 +8,10 @@ import FilterCategoryItem from '../categories/filterCategoryItem';
 import 'react-tabs/style/react-tabs.css';
 import { collection_activity_item_data } from '../../data/collection_data';
 
-const Collection_items = () => {
+const Collection_items = ({influencerData}) => {
 	const [itemsTabs, setItemsTabs] = useState(1);
-	const [categoryItemData, setCategoryItemData] = useState(trendingCategoryData);
+	const [categoryItemData, setCategoryItemData] = useState([]);
+	console.log(influencerData);
 
 	const collectionItemsTabs = [
 		{
@@ -62,7 +63,7 @@ const Collection_items = () => {
 
 						<TabPanel>
 							<div>
-								<FilterCategoryItem />
+								<FilterCategoryItem influencerData = {influencerData}/>
 							</div>
 						</TabPanel>
 						<TabPanel>

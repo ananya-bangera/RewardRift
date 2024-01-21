@@ -1,0 +1,2 @@
+const GHO_TOKEN = "0xc4bF5CbDaBE595361438F8c6a187bDc330539c60";
+export default GHO_TOKEN;

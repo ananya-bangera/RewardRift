@@ -14,21 +14,22 @@ import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 require("@solana/wallet-adapter-react-ui/styles.css");
 import { WagmiConfig, createConfig } from "wagmi";
 import { ConnectKitProvider, ConnectKitButton, getDefaultConfig } from "connectkit";
-import {goerli, sepolia } from "wagmi/chains";
+import {goerli, sepolia, polygonMumbai } from "wagmi/chains";
+
 
 // Change the network to the one you want to use: "mainnet-beta", "testnet", "devnet", "localhost" or your own RPC endpoint
 // const desiredNetwork = "sepolia";
 const config = createConfig(
 	getDefaultConfig({
 		// Required API Keys
-		alchemyId: process.env.ALCHEMY_ID, // or infuraId
+		alchemyId: process.env.REACT_APP_ALCHEMY_ID, // or infuraId
 		walletConnectProjectId: process.env.WALLETCONNECT_PROJECT_ID,
 
 		// Required
 		appName: "RewardRift",
 
 		// Optional
-		chains: [goerli , sepolia], // default: ["mainnet", "testnet", "devnet", "localhost"]
+		chains: [ sepolia, polygonMumbai], // default: ["mainnet", "testnet", "devnet", "localhost"]
 		appDescription: "Your App Description",
 		appUrl: "http://localhost:3000/", // your app's url
 		appIcon: "https://family.co/logo.png", // your app's icon, no bigger than 1024x1024px (max. 1MB)

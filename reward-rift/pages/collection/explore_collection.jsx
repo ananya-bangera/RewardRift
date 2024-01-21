@@ -17,14 +17,17 @@ const Explore_collection = () => {
     Feature_collections_data
   );
   const [filterVal, setFilterVal] = useState(0);
+  const [filterText, setFilterText] = useState("All");
 
   const handleItemFilter = (text) => {
     if (text === "all") {
       setCollectionFilteredData(Feature_collections_data);
+      setFilterText("All");
     } else {
       setCollectionFilteredData(
         Feature_collections_data.filter((item) => item.category === text)
       );
+      setFilterText(text);
     }
   };
 
@@ -46,7 +49,7 @@ const Explore_collection = () => {
 
         <div className="container">
           <HeadLine
-            text="Explore Collections"
+            text="Explore Influencers"
             classes="font-display text-jacarta-700 py-16 text-center text-4xl font-medium dark:text-white"
           />
 
@@ -114,7 +117,7 @@ const Explore_collection = () => {
 
           {/* <!-- Grid --> */}
           <div className="grid grid-cols-1 gap-[1.875rem] md:grid-cols-3 lg:grid-cols-4">
-            <Explore_collection_item itemFor="explore-collection" />
+            <Explore_collection_item itemFor="explore-collection"  filterText={filterText}/>
           </div>
         </div>
       </section>

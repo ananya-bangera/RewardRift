@@ -35,20 +35,33 @@ export const collectionDropdown2_data = [
 		image: '/images/avatars/collection_ava_7.png',
 	},
 ];
+
 export const EthereumDropdown2_data = [
+	
 	{
-		id: '0Ethereum',
-		text: 'Ethereum',
-		image: '/images/chains/ETH.png',
+	  id: "Art",
+	  image: "/icons.svg#icon-art",
+	  text: "Art",
+	},
+  
+	{
+	  id: "Sports",
+	  image: "/icons.svg#icon-collection",
+	  text: "Sports",
 	},
 	{
-		id: '1Flow',
-		text: 'Flow',
-		image: '/images/chains/FLOW.png',
+	  id: "Music",
+	  image: "/icons.svg#icon-music",
+	  text: "Music",
 	},
 	{
-		id: '2FUSD',
-		text: 'FUSD',
-		image: '/images/chains/FUSD.png',
+	  id: "Photography",
+	  image: "/icons.svg#icon-photography",
+	  text: "Photography",
 	},
-];
+	{
+	  id: "Virtual World",
+	  image: "/icons.svg#icon-world",
+	  text: "Virtual World",
+	},
+  ];
