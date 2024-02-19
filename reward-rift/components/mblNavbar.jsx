@@ -12,7 +12,7 @@ import {
 } from "@solana/wallet-adapter-react-ui";
 import SolanaWallet from "./SolanaWallet";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { ConnectKitButton } from "connectkit";
+import { KitButton } from "connectkit";
 require("@solana/wallet-adapter-react-ui/styles.css");
 
 async function getbalance(publicKey) {
